@@ -9,4 +9,10 @@
     <version>1.0-SNAPSHOT</version>
 
 
+    <modules>
+        <module>BookNote</module>
+        <module>DtDream</module>
+        <module>JavaProject</module>
+    </modules>
+
 </project>
