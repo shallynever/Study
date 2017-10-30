@@ -18,42 +18,34 @@ public class DateServer {
 		int[]  ports = {1111,2222,3333,4444};
 		Selector selector = Selector.open();
 		for (int port : ports) {
-			ServerSocketChannel ssc = null;
-			ssc = ServerSocketChannel.open();
-			ssc.configureBlocking(false);
-			ServerSocket ss = ssc.socket();
-			InetSocketAddress address = null;
-			address = new InetSocketAddress(port);
-			ss.bind(address);
-			ssc.register(selector, SelectionKey.OP_ACCEPT);
-			System.out.println("������������"+port+"�˿���");
+			ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+			serverSocketChannel.configureBlocking(false);
+			ServerSocket serverSocket = serverSocketChannel.socket();
+			InetSocketAddress address = new InetSocketAddress(port);
+			serverSocket.bind(address);
+			serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+			System.out.println("server listen on :"+port);
 		}
-//		System.out.println("==================");
 
-		@SuppressWarnings("unused")
-		int keyAdd = 0;
+		int keyAdd;
 		while((keyAdd = selector.select())>0){
-//			System.out.println(keyAdd);
+			System.out.println(keyAdd);
 			Set<SelectionKey> selectedKeys = selector.selectedKeys();
-			Iterator<SelectionKey> it = selectedKeys.iterator();
-			while(it.hasNext()){
-				SelectionKey key = (SelectionKey)it.next();
+			Iterator<SelectionKey> iterator = selectedKeys.iterator();
+			while(iterator.hasNext()){
+				SelectionKey key = iterator.next();
 				if(key.isAcceptable()){
 					ServerSocketChannel server = (ServerSocketChannel) key.channel();
 					SocketChannel client = server.accept();
 					client.configureBlocking(false);
 					ByteBuffer outBuf = ByteBuffer.allocateDirect(1024);
-					outBuf.put(("��ǰʱ��Ϊ��"+new Date()).getBytes());
-					
+					outBuf.put(("current time:"+new Date()).getBytes());
 					outBuf.flip();
 					client.write(outBuf);
 					client.close();
-				
 				}
 			}
 			selectedKeys.clear();
-		
 		}
 	}
-
 }

@@ -9,18 +9,19 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
 public class NIOSocket {
+
 	private static final int CLIENT_PORT = 1111;
 	private static final int SERVER_PORT = 2222;
-	private static SocketChannel ch;
+	private static SocketChannel socketChannel;
 	private static Selector sel;
 
 	public static void main(String[] args) throws IOException {
-		ch = SocketChannel.open();
+		socketChannel = SocketChannel.open();
 		sel = Selector.open();
 
-		ch.socket().bind(new InetSocketAddress(CLIENT_PORT));
-		ch.configureBlocking(false);
-		ch.register(sel, SelectionKey.OP_READ | SelectionKey.OP_WRITE | SelectionKey.OP_CONNECT);
+		socketChannel.socket().bind(new InetSocketAddress(CLIENT_PORT));
+		socketChannel.configureBlocking(false);
+		socketChannel.register(sel, SelectionKey.OP_READ | SelectionKey.OP_WRITE | SelectionKey.OP_CONNECT);
 		sel.select();
 		Iterator<SelectionKey> it = sel.selectedKeys().iterator();
 		while(it.hasNext()){
@@ -29,8 +30,8 @@ public class NIOSocket {
 			if(key.isConnectable()){
 				InetAddress inetAddress = InetAddress.getLocalHost();
 				System.out.println("Connect will not block");
-				if(!ch.connect(new InetSocketAddress(inetAddress, SERVER_PORT))){
-					ch.finishConnect();
+				if(!socketChannel.connect(new InetSocketAddress(inetAddress, SERVER_PORT))){
+					socketChannel.finishConnect();
 				}
 			}
 			if(key.isReadable()){
@@ -42,7 +43,7 @@ public class NIOSocket {
 
 
 		}
-		ch.close();
+		socketChannel.close();
 		sel.close();
 
 
