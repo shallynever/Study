@@ -8,7 +8,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 /**
- * 内存中操作流
+ * 内存操作流
  * @author 天启 zhouj@dtdream.com
  * @since
  */

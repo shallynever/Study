@@ -6,6 +6,11 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+/**
+ * 管道流
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
 
 public class PipedStreamDemo {
 

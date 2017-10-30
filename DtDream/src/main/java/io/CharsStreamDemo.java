@@ -44,6 +44,7 @@ public class CharsStreamDemo {
         writer.write(str);
 
         /*
+        * FileWriter 写入文件中文乱码
         * Java FileWriter 默认是用（ISO-8859-1 or US-ASCII）西方编码的，
         * 总之不是UTF-8的，而FileWriter类有getEncoding方法，却没有setEncoding的方法
         * */

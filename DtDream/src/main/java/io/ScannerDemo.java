@@ -2,6 +2,7 @@ package io;
 
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
@@ -25,14 +26,16 @@ public class ScannerDemo {
 
 	@Test
 	public void dateScanner() {
-		Scanner scanner = new Scanner(System.in);
+		String str = "2017-07-09";
+		System.setIn(new ByteArrayInputStream(str.getBytes()));
 		System.out.println("输入日期（yyyy-MM-dd）：");
-		String str;
+		Scanner scanner = new Scanner(System.in);
+		String dateStr;
 		Date date = null;
 		if(scanner.hasNext("^\\d{4}-\\d{2}-\\d{2}")){
-			str = scanner.next("^\\d{4}-\\d{2}-\\d{2}");
+			dateStr = scanner.next("^\\d{4}-\\d{2}-\\d{2}");
 			try {
-				date = new SimpleDateFormat("yyyy-MM-dd").parse(str);
+				date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -46,9 +49,10 @@ public class ScannerDemo {
 
 	@Test
 	public void baseScanner() {
+		String str = "hello app";
+		System.setIn(new ByteArrayInputStream(str.getBytes()));
 		Scanner scan = new Scanner(System.in);
 		scan.useDelimiter("\n"); //设置读取分隔符
-		System.out.print("输入数据:");
 		String content = scan.next();
 		System.out.println("输入的数据为:"+content);
 		scan.close();
