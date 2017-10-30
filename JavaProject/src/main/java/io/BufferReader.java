@@ -12,8 +12,7 @@ import java.io.InputStreamReader;
 public class BufferReader {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));  //标准键盘输入 		
+		BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));  //标准键盘输入
 		BufferedReader buftxt = new BufferedReader(
 				new FileReader(new File("F:"+File.separator+"test.txt")));		
 		String str = null;

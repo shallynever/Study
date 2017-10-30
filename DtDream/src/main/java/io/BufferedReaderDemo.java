@@ -13,7 +13,7 @@ public class BufferedReaderDemo {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 		StringBuffer stringBuffer = new StringBuffer();
 		System.out.println("ÇëÊäÈëÄÚÈİ£º");
-		stringBuffer.append(bufferedReader.readLine());
+//		stringBuffer.append(bufferedReader.readLine());
 		String tempStr;
 		while((tempStr = bufferedReader.readLine())!= null){
 			stringBuffer.append(tempStr+"\r\n");
