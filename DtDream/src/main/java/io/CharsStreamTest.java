@@ -17,9 +17,10 @@ import java.io.Writer;
 
 /**
  * 字符流
+ *
  * @author 天启 zhouj@dtdream.com
  */
-public class CharsStreamDemo {
+public class CharsStreamTest {
 
     /*
     * 字符流与字节流的区别
@@ -32,15 +33,15 @@ public class CharsStreamDemo {
     * */
 
 
-
-    String filePath = "F:"+ File.separator+ "io" +File.separator+"CharsStream"+File.separator+"test.txt";
+    String filePath = "F:" + File.separator + "io" + File.separator + "CharsStream" + File.separator + "test.txt";
     File file = new File(filePath);
 
     @Test
     public void writer() throws Exception {
         String str = "\r\nJAVA程序通过流来完成输入/输出";
         Writer writer;
-        writer = new FileWriter(file,true);  // 可追加内容
+        // 可追加内容
+        writer = new FileWriter(file, true);
         writer.write(str);
 
         /*
@@ -48,7 +49,7 @@ public class CharsStreamDemo {
         * Java FileWriter 默认是用（ISO-8859-1 or US-ASCII）西方编码的，
         * 总之不是UTF-8的，而FileWriter类有getEncoding方法，却没有setEncoding的方法
         * */
-        writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file,true), "GBK"));
+        writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "GBK"));
         writer.write(str);
 
         writer.flush();
@@ -60,12 +61,12 @@ public class CharsStreamDemo {
     @Test
     public void reader() throws IOException {
         Reader reader = new FileReader(file);
-        char[] chars = new char[(int)file.length()];
+        char[] chars = new char[(int) file.length()];
         int len = 0;
         int temp;
         reader.read(chars);
-        while ((temp=reader.read())!= -1) {
-            chars[len++]=(char)temp;
+        while ((temp = reader.read()) != -1) {
+            chars[len++] = (char) temp;
         }
         reader.close();
         System.out.println(new String(chars));
@@ -77,33 +78,38 @@ public class CharsStreamDemo {
         String sourcePath = null;
         String destinationPath = null;
 
-        if(sourcePath == null || destinationPath == null){		// 判断是否是两个参数
+        // 判断是否是两个参数
+        if (sourcePath == null || destinationPath == null) {
             System.out.println("输入路径参数不正确");
         }
-        File sourceFile = new File(sourcePath) ;	// 源文件的File对象
-        File destinationFile = new File(destinationPath) ;	// 目标文件的File对象
-        if(!sourceFile.exists()){
-            System.out.println("源文件不存在") ;
+        // 源文件的File对象
+        File sourceFile = new File(sourcePath);
+        // 目标文件的File对象
+        File destinationFile = new File(destinationPath);
+        if (!sourceFile.exists()) {
+            System.out.println("源文件不存在");
         }
-        InputStream input = null ;		// 准备好输入流对象，读取源文件
-        OutputStream out = null ;		// 准备好输出流对象，写入目标文件
+        // 准备好输入流对象，读取源文件
+        InputStream input = new FileInputStream(sourceFile);
+        // 准备好输出流对象，写入目标文件
+        OutputStream out = new FileOutputStream(destinationFile);
 
-        input = new FileInputStream(sourceFile) ;
-        out = new FileOutputStream(destinationFile) ;
-
-        if(input!=null && out!=null){	// 判断输入或输出是否准备好
-            int temp = 0 ;
-            try{
-                while((temp=input.read())!=-1){	// 开始拷贝
-                    out.write(temp) ;	// 边读边写
+        // 判断输入或输出是否准备好
+        if (input != null && out != null) {
+            int temp = 0;
+            try {
+                // 开始拷贝
+                while ((temp = input.read()) != -1) {
+                    // 边读边写
+                    out.write(temp);
                 }
-                System.out.println("拷贝完成！") ;
-            }catch(IOException e){
-                e.printStackTrace() ;
-                System.out.println("拷贝失败！") ;
+                System.out.println("拷贝完成！");
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("拷贝失败！");
             } finally {
-                input.close() ;		// 关闭
-                out.close() ;		// 关闭
+                input.close();
+                out.close();
             }
         }
     }

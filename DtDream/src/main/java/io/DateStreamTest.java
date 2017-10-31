@@ -8,8 +8,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-public class DateStreamDemo {
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class DateStreamTest {
 
 	/*
     * 数据操作流：操作基本数据类型的流
@@ -36,17 +39,17 @@ public class DateStreamDemo {
         char c;         // '\u0000'
         try {
             while (true) {
-                temp = new char[200];    // 开辟空间
+                temp = new char[200];
                 len = 0;
-                while ((c = dataInputStream.readChar()) != '\t') {    // 接收内容
+                while ((c = dataInputStream.readChar()) != '\t') {
                     temp[len] = c;
                     len++;    // 读取长度加1
                 }
-                name = new String(temp, 0, len);             // 将字符数组变为String
-                price = dataInputStream.readFloat();                // 读取价格
-                dataInputStream.readChar();                     // 读取\t
-                number = dataInputStream.readInt();             // 读取int
-                dataInputStream.readChar();    // 读取\n
+                name = new String(temp, 0, len);
+                price = dataInputStream.readFloat();
+                dataInputStream.readChar();
+                number = dataInputStream.readInt();
+                dataInputStream.readChar();
                 System.out.printf("名称：%s；价格：%5.2f；数量：%d\n", name, price, number);
             }
         } catch (Exception e) {
@@ -57,16 +60,16 @@ public class DateStreamDemo {
     @Test
     public void dateOutputStream() throws Exception {
         DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(file));
-        String[] names = {"衬衣", "手套", "围巾"};    // 商品名称
-        float[] prices = {98.3f, 30.3f, 50.5f};        // 商品价格
-        int[] numbers = {3, 2, 1};    // 商品数量
-        for (int i = 0; i < names.length; i++) {    // 循环输出
-            dataOutputStream.writeChars(names[i]);    // 写入字符串
-            dataOutputStream.writeChar('\t');    // 写入分隔符
-            dataOutputStream.writeFloat(prices[i]); // 写入价格
-            dataOutputStream.writeChar('\t');    // 写入分隔符
-            dataOutputStream.writeInt(numbers[i]); // 写入数量
-            dataOutputStream.writeChar('\n');    // 换行
+        String[] names = {"衬衣", "手套", "围巾"};
+        float[] prices = {98.3f, 30.3f, 50.5f};
+        int[] numbers = {3, 2, 1};
+        for (int i = 0; i < names.length; i++) {
+            dataOutputStream.writeChars(names[i]);
+            dataOutputStream.writeChar('\t');
+            dataOutputStream.writeFloat(prices[i]);
+            dataOutputStream.writeChar('\t');
+            dataOutputStream.writeInt(numbers[i]);
+            dataOutputStream.writeChar('\n');
         }
         dataOutputStream.close();
     }

@@ -10,8 +10,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-
-public class SystemIODemo {
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class SystemIOTest {
 
 	/*
 	* System.in是一个典型的连接控制台程序和键盘输入的InputStream流。
@@ -43,10 +46,11 @@ public class SystemIODemo {
 
 	@Test
 	public void systemIn() throws Exception {
-		System.setIn(new FileInputStream(file));  //System.in的输入重定向
+		//System.in的输入重定向
+		System.setIn(new FileInputStream(file));
 		InputStream input = System.in;
 		StringBuffer buf = new StringBuffer();
-		byte b[] = new  byte[1024];
+		byte[] b = new  byte[1024];
 		System.out.println("请输入类容：");
 
 		int len = input.read(b);

@@ -5,8 +5,11 @@ import org.junit.Test;
 import java.io.File;
 import java.io.PrintStream;
 import java.io.PrintWriter;
-
-public class PrintStreamDemo {
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class PrintStreamTest {
 
 	/*
 	* 在整个IO包中,打印流是输出信息最方便的类,主要包含字节打印流(PrintStream)和字符打印流(PrintWriter)

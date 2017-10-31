@@ -8,8 +8,11 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
-public class ZipOutputStreamDemo {
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class ZipOutputStreamTest {
 
 	String filePath = "F:"+ File.separator+ "io" +File.separator+"Zip";
 
@@ -22,7 +25,7 @@ public class ZipOutputStreamDemo {
 		ZipOutputStream zipOutputStream =  new ZipOutputStream(new FileOutputStream(zipFile));
 		zipOutputStream.setComment("apocalypse");
 		if(file.isDirectory()){
-			File lists[] = file.listFiles();
+			File[] lists = file.listFiles();
 			for (int i = 0; i < lists.length; i++) {
 				inputStream = new FileInputStream(lists[i]);
 				zipOutputStream.putNextEntry(new ZipEntry(file.getName()+File.separator+lists[i].getName()));

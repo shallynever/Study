@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * @author ÃÏ∆Ù zhouj@dtdream.com
+ * @since
+ */
 public class InputDate {
 	private BufferedReader bufr = null;
 	public InputDate(){

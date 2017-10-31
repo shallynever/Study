@@ -15,7 +15,7 @@ import java.io.SequenceInputStream;
  *
  * @author 天启 zhouj@dtdream.com
  */
-public class SequenceStreamDemo {
+public class SequenceStreamTest {
 
     String filePath1 = "F:"+ File.separator+ "io" +File.separator+"SequenceStream"+File.separator+"privateKey.txt";
     String filePath2 = "F:"+ File.separator+ "io" +File.separator+"SequenceStream"+File.separator+"publicKey.txt";

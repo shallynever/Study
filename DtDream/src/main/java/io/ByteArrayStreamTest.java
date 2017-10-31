@@ -12,7 +12,7 @@ import java.io.DataOutputStream;
  * @author 天启 zhouj@dtdream.com
  * @since
  */
-public class ByteArrayStreamDemo {
+public class ByteArrayStreamTest {
 
 	/*
 	* ByteArrayInputStream 可以将字节数组转化为输入流 。

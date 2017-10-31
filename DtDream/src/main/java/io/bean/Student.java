@@ -17,6 +17,7 @@ public class Student implements Externalizable {
         this.age = age;
     }
 
+    @Override
     public String toString(){
         return "name:"+this.name+";age:"+this.age;
     }

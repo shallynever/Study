@@ -15,7 +15,7 @@ import java.nio.channels.FileLock;
 /**
  * @author 天启 zhouj@dtdream.com
  */
-public class ChannelDemo {
+public class ChannelTest {
 
     /*
     * Channel就是一个通道，用于传输数据，两端分别是缓冲区和实体（文件或者套接字）,通道的特点（也是NIO的特点）：

@@ -12,8 +12,8 @@ import java.io.RandomAccessFile;
 /**
  * @author 天启 zhouj@dtdream.com
  */
-public class RandomAccessFileDemo {
-	/*
+public class RandomAccessFileTest {
+	/**
 	* Mode
 	* "r" 以只读方式打开。调用结果对象的任何 write 方法都将导致抛出 IOException。
 	* "rw" 打开以便读取和写入。如果该文件尚不存在，则尝试创建该文件。

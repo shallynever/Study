@@ -8,8 +8,11 @@ import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-
-public class ScannerDemo {
+/**
+ * @author ÃÏ∆Ù zhouj@dtdream.com
+ * @since
+ */
+public class ScannerTest {
 
 	String filePath = "F:"+ File.separator+ "io" +File.separator+"SystemIO"+File.separator+"test.txt";
 	File file = new File(filePath);

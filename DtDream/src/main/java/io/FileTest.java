@@ -8,12 +8,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-
 /**
  * @author 天启 zhouj@dtdream.com
  */
-public class FileDemo {
-	/*
+public class FileTest {
+	/**
     * File类的一些常用方法和重要的概念
 	* 1、一个File类的对象，表示磁盘上的文件或目录。
 	* 2、File提供了与平台无关的方法来对磁盘上的文件或目录进行操作。
@@ -21,19 +20,17 @@ public class FileDemo {
 	* 4、File类没有指定信息怎样从文件读取或向文件存储。
 	* */
 	private TreeSet<String> filePathSet = new TreeSet<>();
-	private static final String filePath = "F:"+File.separator+ "io";
+	private static final String filePath = "F:"+File.separator+ "io"+File.separator+"File";
 
 	@Test
 	public void fileGeneralOperation() throws IOException {
-
-		File file;
-		file = new File(filePath+File.separator+"File"+File.separator+"Test");
-		// 创建此抽象路径名指定的目录,只创建该层级目录,如果父目录不存在,则创建失败
+		File file = new File(filePath+File.separator+"Test");
+		// 创建此抽象路径名指定的目录,只创建该层级目录,如果父目录不存在,则创建失败,但是不会报错
 		file.mkdir();
 		// 创建此抽象路径名指定的目录,包括所有必需但不存在的父目录
 		file.mkdirs();
 
-		file = new File(filePath+File.separator+"test.txt");
+		File file1 = new File(filePath+File.separator+"test.txt");
 
 		// 判断文件是否存在
 		if(file.exists()){
@@ -46,7 +43,7 @@ public class FileDemo {
 			file.delete();
 		} else {
 			// 创建文件
-			file.createNewFile();
+			file1.createNewFile();
 		}
 
 		// 路径分隔符
@@ -67,7 +64,7 @@ public class FileDemo {
 	@Test
 	public  void listCurrentFile() throws UnsupportedEncodingException {
 		File file = new File(filePath);
-		String str[] = file.list();
+		String[] str = file.list();
 		File[] files = file.listFiles();
 		if(file.exists()){
 			for(int i= 0;i<str.length;i++){
@@ -84,10 +81,10 @@ public class FileDemo {
 	private TreeSet<String> getFilePath(File file) {
 		if(file != null){
 			if(file.isDirectory()){
-				File f[] = file.listFiles();
-				if(f != null){
-					for (int i = 0; i < f.length; i++) {
-						getFilePath(f[i]);
+				File[] files = file.listFiles();
+				if(files != null){
+					for (int i = 0; i < files.length; i++) {
+						getFilePath(files[i]);
 					}
 				}
 			}

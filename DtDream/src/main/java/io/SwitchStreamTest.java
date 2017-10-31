@@ -14,7 +14,7 @@ import java.io.Writer;
 /**
  * @author 天启 zhouj@dtdream.com
  */
-public class SwitchStreamDemo {
+public class SwitchStreamTest {
     /*
     * 作用：
     * InputStreamReader 的作用是将“字节输入流”转换成“字符输入流”。它继承于Reader。

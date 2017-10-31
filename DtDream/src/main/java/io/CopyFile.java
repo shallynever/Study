@@ -7,23 +7,32 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
 public class CopyFile{
 	
-	public static void main(String args[]){
-		if(args.length!=2){		// 判断是否是两个参数
+	public static void main(String[] args){
+		// 判断是否是两个参数
+		if(args.length != 2){
 			System.out.println("输入的参数不正确。") ;
 			System.out.println("例：java Copy 源文件路径 目标文件路径") ;
-			System.exit(1) ;	// 系统退出
+			// 系统退出
+			System.exit(1) ;
 		}
-		File file1 = new File(args[0]) ;	// 源文件的File对象
-		File file2 = new File(args[1]) ;	// 目标文件的File对象
+		// 源文件的File对象
+		File file1 = new File(args[0]) ;
+		// 目标文件的File对象
+		File file2 = new File(args[1]) ;
 		if(!file1.exists()){
 			System.out.println("源文件不存在！") ;
 			System.exit(1) ;
 		}
-		InputStream input = null ;		// 准备好输入流对象，读取源文件
-		OutputStream out = null ;		// 准备好输出流对象，写入目标文件
+		// 准备好输入流对象，读取源文件
+		InputStream input = null ;
+		// 准备好输出流对象，写入目标文件
+		OutputStream out = null ;
 		try{
 			input = new FileInputStream(file1) ;
 		}catch(FileNotFoundException e){
@@ -34,11 +43,12 @@ public class CopyFile{
 		}catch(FileNotFoundException e){
 			e.printStackTrace() ;
 		}
-		if(input!=null && out!=null){	// 判断输入或输出是否准备好
+		// 判断输入或输出是否准备好
+		if(input!=null && out!=null){
 			int temp = 0 ;
 			try{
-				while((temp=input.read())!=-1){	// 开始拷贝
-					out.write(temp) ;	// 边读边写
+				while((temp=input.read())!=-1){
+					out.write(temp) ;
 				}
 				System.out.println("拷贝完成！") ;
 			}catch(IOException e){

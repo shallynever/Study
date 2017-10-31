@@ -14,7 +14,7 @@ import java.nio.channels.FileChannel;
 /**
  * @author 天启 zhouj@dtdream.com
  */
-public class BufferDemo {
+public class BufferTest {
 
     /*
     * NIO中的buffer用于和通道交互，数据是从通道读入缓冲区，从缓冲区中写入通道的。

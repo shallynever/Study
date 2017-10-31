@@ -10,8 +10,11 @@ import java.io.OutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
-
-public class ZipFileDemo {
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class ZipFileTest {
 
 	@Test
 	public void zipFile02() throws Exception {
@@ -19,7 +22,8 @@ public class ZipFileDemo {
 		File outputFile = new  File("F:"+File.separator+"demo_unzip.txt");
 		
 		ZipFile zipfile = new ZipFile(file);
-		ZipEntry entry = zipfile.getEntry("demo.txt");  // 根据压缩实体的名称获得实体对象
+		// 根据压缩实体的名称获得实体对象
+		ZipEntry entry = zipfile.getEntry("demo.txt");
 		InputStream input = zipfile.getInputStream(entry);
 		OutputStream out = new FileOutputStream(outputFile);
 		int temp;

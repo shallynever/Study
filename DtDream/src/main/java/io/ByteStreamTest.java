@@ -15,7 +15,7 @@ import java.io.OutputStreamWriter;
  * @author 天启 zhouj@dtdream.com
  * *
  */
-public class ByteStreamDemo {
+public class ByteStreamTest {
 
     String filePath = "F:"+ File.separator+ "io" +File.separator+"ByteStream"+File.separator+"test.txt";
 
@@ -26,7 +26,7 @@ public class ByteStreamDemo {
         OutputStream outputStream = new FileOutputStream(file,true);
 
         String str = "\r\nJAVA程序通过流来完成输入/输出";
-        byte bytes[] = str.getBytes();
+        byte[] bytes = str.getBytes();
         // 将byte数组直接写入文件
         outputStream.write(bytes);
         // 循环把每个字节一个个写入文件
@@ -52,7 +52,8 @@ public class ByteStreamDemo {
         File file = new File(filePath);
         InputStream inputStream = new FileInputStream(file);
 //        byte[] bytes = new byte[1024];  //读取出来的内容可能存在大量的空格
-        byte[] bytes = new byte[(int)file.length()];   //开辟一定空间
+        //开辟一定空间
+        byte[] bytes = new byte[(int)file.length()];
         inputStream.read(bytes);
 
         int temp = 0;
@@ -61,8 +62,6 @@ public class ByteStreamDemo {
         while((temp = inputStream.read())!= -1){
             bytes[count++] = (byte) temp;
         }
-
-
         inputStream.close();
         System.out.println(new String(bytes));
     }

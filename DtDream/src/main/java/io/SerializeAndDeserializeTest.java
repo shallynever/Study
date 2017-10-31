@@ -11,8 +11,11 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-
-public class SerializeAndDeserializeDemo{
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class SerializeAndDeserializeTest{
 
 	/*
 	* 对象序列化就是把一个对象变为二进制的数据流的一种方式，通过对象序列化	可以方便地实现

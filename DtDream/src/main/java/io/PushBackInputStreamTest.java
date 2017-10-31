@@ -6,10 +6,12 @@ import java.io.ByteArrayInputStream;
 import java.io.PushbackInputStream;
 
 
-/*
-* 回退流
-* */
-public class PushBackInputStreamDemo {
+/**
+ * 回退流
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class PushBackInputStreamTest {
 
 	@Test
 	public void pushBackInputStream() throws Exception {

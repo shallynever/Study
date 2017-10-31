@@ -12,8 +12,11 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
 
-
-public class ExternalizeDemo {
+/**
+ * @author 天启 zhouj@dtdream.com
+ * @since
+ */
+public class ExternalizeTest {
 
 	@Test
 	public void deserialize() throws Exception {

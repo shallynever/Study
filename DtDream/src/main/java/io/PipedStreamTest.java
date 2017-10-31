@@ -12,7 +12,7 @@ import java.io.IOException;
  * @since
  */
 
-public class PipedStreamDemo {
+public class PipedStreamTest {
 
 	/*
 	* PipedInputStream”ÎPipedOutputStreamΩÈ…‹£∫
