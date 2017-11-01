@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/Scoket/Client.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/Scoket/CrazyitMap.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/Scoket/CrazyitProtocol.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/Scoket/Server.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/Scoket/ServerThread.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/TestDemo/StringDemo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/action/Listener.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/BookNote/src/main/java/data_Structure/ImplArrayQueue.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/collection/CollectionOutput.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/collection/CollectionTools.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/collection/ListDemo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/collection/SetDemo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/networkProgram/GetAllIp.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/networkProgram/SocketProgram_Server.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/networkProgram/SocketPrograme_Client.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/networkProgram/UDPReceive.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/JavaProject/src/main/java/networkProgram/UDPSend.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/Client.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/CrazyitMap.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/CrazyitProtocol.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/Server.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/ServerThread.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/SocketClient.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/SocketServer.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/UDPReceive.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/Scoket/UDPSend.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/BufferedReaderTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/ByteArrayStreamTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/ByteStreamTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/CopyFile.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/DateStreamTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/PipedStreamTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/PrintStreamTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/RandomAccessFileTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/ScannerTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/SystemIOTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Share/src/main/java/io/tools/InputDate.java" charset="GBK" />
+  </component>
+</project>

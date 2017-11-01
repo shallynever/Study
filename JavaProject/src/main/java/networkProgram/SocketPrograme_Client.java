@@ -10,8 +10,7 @@ import java.net.Socket;
 public class SocketPrograme_Client {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		Socket client = new Socket("10.20.216.57", 10000);
+		Socket client = new Socket("localhost", 9999);
 		
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 		

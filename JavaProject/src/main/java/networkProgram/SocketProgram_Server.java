@@ -15,7 +15,7 @@ public class SocketProgram_Server {
 		Socket client = null;
 		PrintStream out = null;
 		BufferedReader buf = null;
-		server = new ServerSocket(10000);
+		server = new ServerSocket(9999);
 		
 		boolean f = true;
 		

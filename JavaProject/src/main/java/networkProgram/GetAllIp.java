@@ -13,8 +13,7 @@ public class GetAllIp {
 	public static List<String> list = new ArrayList<String>();
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		
+
 		List<String> ipList = GetAllIPMethod();
 		
 		for (String ipStr : ipList) {
@@ -28,8 +27,7 @@ public class GetAllIp {
 
 	public static List<String> GetAllIPMethod() throws IOException {
 		// TODO Auto-generated method stub
-		String NetworkSegment = getNetworkSegment();		
-
+		String NetworkSegment = getNetworkSegment();
 		for (int i = 215; i <= 216; i++) {
 			for (int j = 0; j <= 255; j++) {
 				String IP = NetworkSegment + i + "." + j;
@@ -71,22 +69,12 @@ public class GetAllIp {
 	}
 
 	public static String getNetworkSegment() throws IOException {
-		// TODO Auto-generated method stub
-						
 		StringBuffer sb = new StringBuffer();
-		
-		Map<String, String> map = new TreeMap<String, String>();
-		
-		
+		Map<String, String> map = new TreeMap<>();
 		Runtime run = Runtime.getRuntime();
-		
 		Process process = run.exec("ipconfig");
-		
 		BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			
-		
 		String str = null;
-		
 		while((str = buf.readLine())!= null){
 			if(!(map.containsKey("×ÓÍøÑÚÂë")&&map.containsKey("Ä¬ÈÏÍø¹Ø"))){
 				if(str.contains("×ÓÍøÑÚÂë")){

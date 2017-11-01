@@ -6,13 +6,15 @@
 
     <groupId>com.apocalypse</groupId>
     <artifactId>Study</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
 
     <modules>
         <module>BookNote</module>
-        <module>DtDream</module>
+        <module>Share</module>
         <module>JavaProject</module>
+        <module>TIJ4</module>
     </modules>
 
     <properties>

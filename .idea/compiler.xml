@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="BookNote" />
+        <module name="DtDream" />
+        <module name="JavaProject" />
+        <module name="TIJ4-code" />
+        <module name="TIJ4code" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="BookNote" target="1.8" />
+      <module name="JavaProject" target="1.8" />
+      <module name="Share" target="1.8" />
+      <module name="Study" target="1.8" />
+      <module name="TIJ4" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
