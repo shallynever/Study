@@ -17,7 +17,6 @@ import java.util.Date;
 public class CombineFile {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		File filea = new File("F:"+File.separator+"a.txt");
 		File fileb = new File("F:"+File.separator+"b.txt");
 		File fileab = new File("F:"+File.separator+"ab.txt");

@@ -1,32 +1,23 @@
-package io;
+package io.done;
 
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
 
 /**
- * @author ÌìÆô zhouj@dtdream.com
+ * @author å¤©å¯ zhouj@dtdream.com
+ * @since
  */
+
 public class RandomAccessFileTest {
-	/**
-	* Mode
-	* "r" ÒÔÖ»¶Á·½Ê½´ò¿ª¡£µ÷ÓÃ½á¹û¶ÔÏóµÄÈÎºÎ write ·½·¨¶¼½«µ¼ÖÂÅ×³ö IOException¡£
-	* "rw" ´ò¿ªÒÔ±ã¶ÁÈ¡ºÍĞ´Èë¡£Èç¹û¸ÃÎÄ¼şÉĞ²»´æÔÚ£¬Ôò³¢ÊÔ´´½¨¸ÃÎÄ¼ş¡£
-	* "rws" ´ò¿ªÒÔ±ã¶ÁÈ¡ºÍĞ´Èë£¬¶ÔÓÚ "rw"£¬»¹ÒªÇó¶ÔÎÄ¼şµÄÄÚÈİ»òÔªÊı¾İµÄÃ¿¸ö¸üĞÂ¶¼Í¬²½Ğ´Èëµ½µ×²ã´æ´¢Éè±¸¡£
-	* "rwd" ´ò¿ªÒÔ±ã¶ÁÈ¡ºÍĞ´Èë£¬¶ÔÓÚ "rw"£¬»¹ÒªÇó¶ÔÎÄ¼şÄÚÈİµÄÃ¿¸ö¸üĞÂ¶¼Í¬²½Ğ´Èëµ½µ×²ã´æ´¢Éè±¸¡£
-	*
-	* RandomAccessFile´æÔÚÒâÒå
-	* 1¡¢ÊÇJAVA I/OÁ÷ÌåÏµÖĞ¹¦ÄÜ×î·á¸»µÄÎÄ¼şÄÚÈİ·ÃÎÊÀà£¬ËüÌá¹©ÁËÖÚ¶à·½·¨À´·ÃÎÊÎÄ¼şÄÚÈİ¡£
-	* 2¡¢ÓÉÓÚ¿ÉÒÔ×ÔÓÉ·ÃÎÊÎÄ¼şµÄÈÎÒâÎ»ÖÃ£¬ËùÒÔÈç¹ûĞèÒª·ÃÎÊÎÄ¼şµÄ²¿·ÖÄÚÈİ£¬RandomAccessFile½«ÊÇ¸üºÃµÄÑ¡Ôñ¡£
-	* 3¡¢¿ÉÒÔÓÃÀ´·ÃÎÊ±£´æÊı¾İ¼ÇÂ¼µÄÎÄ¼ş£¬ÎÄ¼şµÄ¼ÇÂ¼µÄ´óĞ¡²»±ØÏàÍ¬£¬µ«ÊÇÆä´óĞ¡ºÍÎ»ÖÃ±ØĞëÊÇ¿ÉÖªµÄ¡£
-	*
-	* */
-	String filePath = "F:"+File.separator+ "io" +File.separator+"File"+File.separator+"test.txt";
+
+	static String filePath = "F:"+File.separator+ "io" +File.separator+"File"+File.separator+"test.txt";
 
 	@Test
 	public void randomAccessFileRead() throws Exception {
@@ -75,11 +66,9 @@ public class RandomAccessFileTest {
 	@Test
 	public void insert() throws IOException	{
 		File file = new File(filePath);
-		String content = "ÖĞ¹ú";
+		String content = "ä¸­å›½";
 		int pos = 5;
-		//´´½¨ÁÙÊ±¿ÕÎÄ¼ş
 		File tempFile = File.createTempFile("temp",null);
-		//ÔÚĞéÄâ»úÖÕÖ¹Ê±£¬ÇëÇóÉ¾³ı´Ë³éÏóÂ·¾¶Ãû±íÊ¾µÄÎÄ¼ş»òÄ¿Â¼
 		tempFile.deleteOnExit();
 		FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
 
@@ -96,5 +85,49 @@ public class RandomAccessFileTest {
 		while((num = fileInputStream.read(buffer)) != -1){
 			randomAccessFile.write(buffer,0,num);
 		}
+	}
+
+	public static void main(String[] args) throws IOException {
+		RandomAccessFile randomAccessFile = new RandomAccessFile(filePath,"rw");
+		System.out.println("0-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// todo skipByte seek
+		/*
+		* 1)seek æ˜¯ç›´æ¥è·³åˆ°æ–‡ä»¶çš„æŒ‡å®šä½ç½®,ä¸å½“å‰ä½ç½®æ— å…³; è°ƒåˆ°ç¬¬å‡ ä¸ªå­—èŠ‚
+		* 2)skipByte æ˜¯åœ¨å½“å‰ä½ç½®çš„åŸºç¡€ä¸Šå†è·³è¿‡æŒ‡å®šå­—èŠ‚æ•°; å†è·³å‡ ä¸ªå­—èŠ‚
+		* */
+
+		// write something in the file
+		randomAccessFile.write("Hello World".getBytes());
+		System.out.println("1-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// set the file pointer at 0 position
+		randomAccessFile.seek(0);
+		System.out.println("2-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// print the string
+		System.out.println("" + randomAccessFile.readLine());
+		System.out.println("3-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// set the file pointer at 0 position
+		randomAccessFile.seek(0);
+		System.out.println("4-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// attempt to skip 10 bytes and print the number of bytes skipped
+		System.out.println("" + randomAccessFile.skipBytes(10));
+		System.out.println("5-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// print what is left after skipping
+		System.out.println("" + randomAccessFile.readLine());
+		System.out.println("6-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// set the file pointer to position 8
+		randomAccessFile.seek(8);
+		System.out.println("7-getFilePointer:"+randomAccessFile.getFilePointer());
+
+		// attempt to skip 10 more bytes and print the number of bytes skipped
+		System.out.println("" + randomAccessFile.skipBytes(10));
+		System.out.println("8-getFilePointer:"+randomAccessFile.getFilePointer());
+
 	}
 }

@@ -9,19 +9,19 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 /**
- * @author ÌìÆô zhouj@dtdream.com
+ * @author å¤©å¯ zhouj@dtdream.com
  * @since
  */
 public class DateStreamTest {
 
 	/*
-    * Êı¾İ²Ù×÷Á÷£º²Ù×÷»ù±¾Êı¾İÀàĞÍµÄÁ÷
-    * DataInputStreamÄÜÒÔÒ»ÖÖÓë»úÆ÷ÎŞ¹Ø£¨µ±Ç°²Ù×÷ÏµÍ³µÈ£©µÄ·½Ê½£¬
-    * Ö±½Ó´ÓµØ´Ó×Ö½ÚÊäÈëÁ÷¶ÁÈ¡JAVA»ù±¾ÀàĞÍºÍStringÀàĞÍµÄÊı¾İ£¬³£ÓÃÓÚÍøÂç´«ÊäµÈ£¨ÍøÂç´«ÊäÊı¾İÒªÇóÓëÆ½Ì¨ÎŞ¹Ø£©
-    * DataOutputStreamÔòÄÜ¹»Ö±½Ó½«JAVA»ù±¾ÀàĞÍºÍStringÀàĞÍÊı¾İĞ´Èëµ½ÆäËûµÄ×Ö½ÚÊäÈëÁ÷¡£
+    * æ•°æ®æ“ä½œæµï¼šæ“ä½œåŸºæœ¬æ•°æ®ç±»å‹çš„æµ
+    * DataInputStreamèƒ½ä»¥ä¸€ç§ä¸æœºå™¨æ— å…³ï¼ˆå½“å‰æ“ä½œç³»ç»Ÿç­‰ï¼‰çš„æ–¹å¼ï¼Œ
+    * ç›´æ¥ä»åœ°ä»å­—èŠ‚è¾“å…¥æµè¯»å–JAVAåŸºæœ¬ç±»å‹å’ŒStringç±»å‹çš„æ•°æ®ï¼Œå¸¸ç”¨äºç½‘ç»œä¼ è¾“ç­‰ï¼ˆç½‘ç»œä¼ è¾“æ•°æ®è¦æ±‚ä¸å¹³å°æ— å…³ï¼‰
+    * DataOutputStreamåˆ™èƒ½å¤Ÿç›´æ¥å°†JAVAåŸºæœ¬ç±»å‹å’ŒStringç±»å‹æ•°æ®å†™å…¥åˆ°å…¶ä»–çš„å­—èŠ‚è¾“å…¥æµã€‚
     *
-	* DataInputStreamºÍDataOutputStreamÊÇĞòÁĞ»¯ÓÃµÄÁ÷,Ò²¾ÍÊÇ¿ÉÒÔ°ÑJava¶ÔÏó»òÕß»ù±¾Êı¾İÀàĞÍÓë¶ş½øÖÆÏà»¥×ª»»,
-	* Òò´ËËµDataInputStreamºÍDataOutputStreamÌá¹©ÁËÓëÆ½Ì¨ÎŞ¹ØµÄÊı¾İ²Ù×÷Á÷¡£
+	* DataInputStreamå’ŒDataOutputStreamæ˜¯åºåˆ—åŒ–ç”¨çš„æµ,ä¹Ÿå°±æ˜¯å¯ä»¥æŠŠJavaå¯¹è±¡æˆ–è€…åŸºæœ¬æ•°æ®ç±»å‹ä¸äºŒè¿›åˆ¶ç›¸äº’è½¬æ¢,
+	* å› æ­¤è¯´DataInputStreamå’ŒDataOutputStreamæä¾›äº†ä¸å¹³å°æ— å…³çš„æ•°æ®æ“ä½œæµã€‚
 	* */
 
     String filePath = "F:" + File.separator + "io" + File.separator + "DateStream" + File.separator + "test.txt";
@@ -31,11 +31,11 @@ public class DateStreamTest {
     @Test
     public void dateInputStream() throws IOException {
         DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file));
-        String name;    // ½ÓÊÕÃû³Æ
-        float price;    // ½ÓÊÕ¼Û¸ñ
-        int number;     // ½ÓÊÕÊıÁ¿
-        char[] temp;    // ½ÓÊÕÉÌÆ·Ãû³Æ
-        int len;        // ±£´æ¶ÁÈ¡Êı¾İµÄ¸öÊı
+        String name;    // æ¥æ”¶åç§°
+        float price;    // æ¥æ”¶ä»·æ ¼
+        int number;     // æ¥æ”¶æ•°é‡
+        char[] temp;    // æ¥æ”¶å•†å“åç§°
+        int len;        // ä¿å­˜è¯»å–æ•°æ®çš„ä¸ªæ•°
         char c;         // '\u0000'
         try {
             while (true) {
@@ -43,14 +43,14 @@ public class DateStreamTest {
                 len = 0;
                 while ((c = dataInputStream.readChar()) != '\t') {
                     temp[len] = c;
-                    len++;    // ¶ÁÈ¡³¤¶È¼Ó1
+                    len++;    // è¯»å–é•¿åº¦åŠ 1
                 }
                 name = new String(temp, 0, len);
                 price = dataInputStream.readFloat();
                 dataInputStream.readChar();
                 number = dataInputStream.readInt();
                 dataInputStream.readChar();
-                System.out.printf("Ãû³Æ£º%s£»¼Û¸ñ£º%5.2f£»ÊıÁ¿£º%d\n", name, price, number);
+                System.out.printf("åç§°ï¼š%sï¼›ä»·æ ¼ï¼š%5.2fï¼›æ•°é‡ï¼š%d\n", name, price, number);
             }
         } catch (Exception e) {
         }
@@ -60,7 +60,7 @@ public class DateStreamTest {
     @Test
     public void dateOutputStream() throws Exception {
         DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(file));
-        String[] names = {"³ÄÒÂ", "ÊÖÌ×", "Î§½í"};
+        String[] names = {"è¡¬è¡£", "æ‰‹å¥—", "å›´å·¾"};
         float[] prices = {98.3f, 30.3f, 50.5f};
         int[] numbers = {3, 2, 1};
         for (int i = 0; i < names.length; i++) {

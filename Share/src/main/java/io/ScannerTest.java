@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 /**
- * @author ÌìÆô zhouj@dtdream.com
+ * @author å¤©å¯ zhouj@dtdream.com
  * @since
  */
 public class ScannerTest {
@@ -31,7 +31,7 @@ public class ScannerTest {
 	public void dateScanner() {
 		String str = "2017-07-09";
 		System.setIn(new ByteArrayInputStream(str.getBytes()));
-		System.out.println("ÊäÈëÈÕÆÚ£¨yyyy-MM-dd£©£º");
+		System.out.println("è¾“å…¥æ—¥æœŸï¼ˆyyyy-MM-ddï¼‰ï¼š");
 		Scanner scanner = new Scanner(System.in);
 		String dateStr;
 		Date date = null;
@@ -43,11 +43,11 @@ public class ScannerTest {
 				e.printStackTrace();
 			}
 		}else{
-			System.out.println("ÊäÈëµÄÈÕÆÚ¸ñÊ½ÓĞÎó£¡");
+			System.out.println("è¾“å…¥çš„æ—¥æœŸæ ¼å¼æœ‰è¯¯ï¼");
 		}
 		System.out.println(date);
 		scanner.close();
-		
+
 	}
 
 	@Test
@@ -55,9 +55,9 @@ public class ScannerTest {
 		String str = "hello app";
 		System.setIn(new ByteArrayInputStream(str.getBytes()));
 		Scanner scan = new Scanner(System.in);
-		scan.useDelimiter("\n"); //ÉèÖÃ¶ÁÈ¡·Ö¸ô·û
+		scan.useDelimiter("\n"); //è®¾ç½®è¯»å–åˆ†éš”ç¬¦
 		String content = scan.next();
-		System.out.println("ÊäÈëµÄÊı¾İÎª:"+content);
+		System.out.println("è¾“å…¥çš„æ•°æ®ä¸º:"+content);
 		scan.close();
 	}
 

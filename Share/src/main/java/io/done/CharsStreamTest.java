@@ -1,4 +1,4 @@
-package io;
+package io.done;
 
 import org.junit.Test;
 
@@ -38,17 +38,13 @@ public class CharsStreamTest {
 
     @Test
     public void writer() throws Exception {
-        String str = "\r\nJAVA程序通过流来完成输入/输出";
+        String str = new String("\r\nJAVA程序通过流来完成输入/输出".getBytes("GBK"));
         Writer writer;
         // 可追加内容
         writer = new FileWriter(file, true);
         writer.write(str);
 
-        /*
-        * FileWriter 写入文件中文乱码
-        * Java FileWriter 默认是用（ISO-8859-1 or US-ASCII）西方编码的，
-        * 总之不是UTF-8的，而FileWriter类有getEncoding方法，却没有setEncoding的方法
-        * */
+
         writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "GBK"));
         writer.write(str);
 
@@ -114,4 +110,20 @@ public class CharsStreamTest {
         }
     }
 
+    public static void main(String[] args) throws IOException {
+        String path = "F:/";
+        String str = "\r\n支付中心";
+        File file = new File(path+"file");
+        byte[] byteA = str.getBytes();
+        for (byte aByte : byteA) {
+            System.out.println(aByte);
+        }
+
+        FileWriter writer = new FileWriter(file,true);
+        System.out.println(writer.getEncoding()+":"+System.getProperty("file.encoding"));
+        writer.write(str);
+        writer.flush();
+        writer.close();
+
+    }
 }

@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 /**
- * @author ÌìÆô zhouj@dtdream.com
+ * @author å¤©å¯ zhouj@dtdream.com
  * @since
  */
 public class BufferedReaderTest {
@@ -15,7 +15,7 @@ public class BufferedReaderTest {
 	public void bufferedReader() throws IOException {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 		StringBuffer stringBuffer = new StringBuffer();
-		System.out.println("ÇëÊäÈëÄÚÈİ£º");
+		System.out.println("è¯·è¾“å…¥å†…å®¹ï¼š");
 
 		stringBuffer.append(bufferedReader.readLine());
 
@@ -24,7 +24,7 @@ public class BufferedReaderTest {
 			stringBuffer.append(tempStr+"\r\n");
 		}
 
-		System.out.println("ÊäÈëµÄÄÚÈİÎª£º"+stringBuffer);
+		System.out.println("è¾“å…¥çš„å†…å®¹ä¸ºï¼š"+stringBuffer);
 	}
 
 }

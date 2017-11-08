@@ -11,32 +11,32 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 /**
- * @author ÌìÆô zhouj@dtdream.com
+ * @author å¤©å¯ zhouj@dtdream.com
  * @since
  */
 public class SystemIOTest {
 
 	/*
-	* System.inÊÇÒ»¸öµäÐÍµÄÁ¬½Ó¿ØÖÆÌ¨³ÌÐòºÍ¼üÅÌÊäÈëµÄInputStreamÁ÷¡£
-	* Í¨³£µ±Êý¾ÝÍ¨¹ýÃüÁîÐÐ²ÎÊý»òÕßÅäÖÃÎÄ¼þ´«µÝ¸øÃüÁîÐÐJava³ÌÐòµÄÊ±ºò£¬System.in²¢²»ÊÇºÜ³£ÓÃ¡£
-	* Í¼ÐÎ½çÃæ³ÌÐòÍ¨¹ý½çÃæ´«µÝ²ÎÊý¸ø³ÌÐò£¬ÕâÊÇÒ»¿éµ¥¶ÀµÄJava IOÊäÈë»úÖÆ¡£
+	* System.inæ˜¯ä¸€ä¸ªå…¸åž‹çš„è¿žæŽ¥æŽ§åˆ¶å°ç¨‹åºå’Œé”®ç›˜è¾“å…¥çš„InputStreamæµã€‚
+	* é€šå¸¸å½“æ•°æ®é€šè¿‡å‘½ä»¤è¡Œå‚æ•°æˆ–è€…é…ç½®æ–‡ä»¶ä¼ é€’ç»™å‘½ä»¤è¡ŒJavaç¨‹åºçš„æ—¶å€™ï¼ŒSystem.inå¹¶ä¸æ˜¯å¾ˆå¸¸ç”¨ã€‚
+	* å›¾å½¢ç•Œé¢ç¨‹åºé€šè¿‡ç•Œé¢ä¼ é€’å‚æ•°ç»™ç¨‹åºï¼Œè¿™æ˜¯ä¸€å—å•ç‹¬çš„Java IOè¾“å…¥æœºåˆ¶ã€‚
 	*
-	* System.outÊÇÒ»¸öPrintStreamÁ÷¡£
-	* System.outÒ»°ã»á°ÑÄãÐ´µ½ÆäÖÐµÄÊý¾ÝÊä³öµ½¿ØÖÆÌ¨ÉÏ¡£
-	* System.outÍ¨³£½öÓÃÔÚÀàËÆÃüÁîÐÐ¹¤¾ßµÄ¿ØÖÆÌ¨³ÌÐòÉÏ¡£
-	* System.outÒ²¾­³£ÓÃÓÚ´òÓ¡³ÌÐòµÄµ÷ÊÔÐÅÏ¢(¾¡¹ÜËü¿ÉÄÜ²¢²»ÊÇ»ñÈ¡³ÌÐòµ÷ÊÔÐÅÏ¢µÄ×î¼Ñ·½Ê½)¡£
+	* System.outæ˜¯ä¸€ä¸ªPrintStreamæµã€‚
+	* System.outä¸€èˆ¬ä¼šæŠŠä½ å†™åˆ°å…¶ä¸­çš„æ•°æ®è¾“å‡ºåˆ°æŽ§åˆ¶å°ä¸Šã€‚
+	* System.outé€šå¸¸ä»…ç”¨åœ¨ç±»ä¼¼å‘½ä»¤è¡Œå·¥å…·çš„æŽ§åˆ¶å°ç¨‹åºä¸Šã€‚
+	* System.outä¹Ÿç»å¸¸ç”¨äºŽæ‰“å°ç¨‹åºçš„è°ƒè¯•ä¿¡æ¯(å°½ç®¡å®ƒå¯èƒ½å¹¶ä¸æ˜¯èŽ·å–ç¨‹åºè°ƒè¯•ä¿¡æ¯çš„æœ€ä½³æ–¹å¼)ã€‚
 	*
-	* System.errÊÇÒ»¸öPrintStreamÁ÷¡£
-	* System.errÓëSystem.outµÄÔËÐÐ·½Ê½ÀàËÆ£¬µ«Ëü¸ü¶àµÄÊÇÓÃÓÚ´òÓ¡´íÎóÎÄ±¾¡£
-	* Ò»Ð©ÀàËÆEclipseµÄ³ÌÐò£¬ÎªÁËÈÃ´íÎóÐÅÏ¢¸ü¼ÓÏÔÑÛ£¬»á½«´íÎóÐÅÏ¢ÒÔºìÉ«ÎÄ±¾µÄÐÎÊ½Í¨¹ýSystem.errÊä³öµ½¿ØÖÆÌ¨ÉÏ¡£
+	* System.erræ˜¯ä¸€ä¸ªPrintStreamæµã€‚
+	* System.errä¸ŽSystem.outçš„è¿è¡Œæ–¹å¼ç±»ä¼¼ï¼Œä½†å®ƒæ›´å¤šçš„æ˜¯ç”¨äºŽæ‰“å°é”™è¯¯æ–‡æœ¬ã€‚
+	* ä¸€äº›ç±»ä¼¼Eclipseçš„ç¨‹åºï¼Œä¸ºäº†è®©é”™è¯¯ä¿¡æ¯æ›´åŠ æ˜¾çœ¼ï¼Œä¼šå°†é”™è¯¯ä¿¡æ¯ä»¥çº¢è‰²æ–‡æœ¬çš„å½¢å¼é€šè¿‡System.errè¾“å‡ºåˆ°æŽ§åˆ¶å°ä¸Šã€‚
 	*
-	* System.out ºÍSystem.err µÄÇø±ð£º
-	* System.outºÍSystem.err¶¼ÊÇPrintStreamµÄÊµÀý»¯¶ÔÏó£¬¶øÇÒÍ¨¹ý´úÂë¿ÉÒÔ·¢ÏÖ£¬Á½Õß¶¼¿ÉÒÔÊä³ö´íÎóÐÅÏ¢£¬
-	* µ«ÊÇÒ»°ãÀ´½²System.outÊÇ½«ÐÅÏ¢ÏÔÊ¾¸øÓÃ»§¿´£¬ÊÇÕý³£µÄÐÅÏ¢ÏÔÊ¾£¬¶øSystem.errµÄÕýºÃÏà·´ÊÇ²»Ï£ÍûÓÃ»§¿´µ½µÄ£¬
-	* »áÖ±½ÓÔÚºóÌ¨´òÓ¡£¬ÊÇ×¨ÃÅÏÔÊ¾´íÎóµÄ¡£
-	* Ò»°ãÀ´½²£¬Èç¹ûÒªÊä³ö´íÎóÐÅÏ¢µÄÊ±ºò×îºÃ²»ÒªÊ¹ÓÃSystem.out¶øÊÇÖ±½ÓÊ¹ÓÃSystem.err ÕâÒ»µãÖ»ÄÜ´ÓÆä¸ÅÄîÉÏ»®·Ö¡£
-	* ÒÔÉÏµÄ´úÂëÒ²¿ÉÒÔÊ¹ÓÃSystem.outÊä³ö£¬Ö»ÄÜ´Ó¸ÅÄîÉÏ»®·Ö¡£
-	* ÇÐ¼Ç£ºSystem.outÊÇÏ£ÍûÓÃ»§¿´µ½µÄ£¬¶øSystem.errÊÇ²»Ï£ÍûÓÃ»§¿´µ½µÄ¡£
+	* System.out å’ŒSystem.err çš„åŒºåˆ«ï¼š
+	* System.outå’ŒSystem.erréƒ½æ˜¯PrintStreamçš„å®žä¾‹åŒ–å¯¹è±¡ï¼Œè€Œä¸”é€šè¿‡ä»£ç å¯ä»¥å‘çŽ°ï¼Œä¸¤è€…éƒ½å¯ä»¥è¾“å‡ºé”™è¯¯ä¿¡æ¯ï¼Œ
+	* ä½†æ˜¯ä¸€èˆ¬æ¥è®²System.outæ˜¯å°†ä¿¡æ¯æ˜¾ç¤ºç»™ç”¨æˆ·çœ‹ï¼Œæ˜¯æ­£å¸¸çš„ä¿¡æ¯æ˜¾ç¤ºï¼Œè€ŒSystem.errçš„æ­£å¥½ç›¸åæ˜¯ä¸å¸Œæœ›ç”¨æˆ·çœ‹åˆ°çš„ï¼Œ
+	* ä¼šç›´æŽ¥åœ¨åŽå°æ‰“å°ï¼Œæ˜¯ä¸“é—¨æ˜¾ç¤ºé”™è¯¯çš„ã€‚
+	* ä¸€èˆ¬æ¥è®²ï¼Œå¦‚æžœè¦è¾“å‡ºé”™è¯¯ä¿¡æ¯çš„æ—¶å€™æœ€å¥½ä¸è¦ä½¿ç”¨System.outè€Œæ˜¯ç›´æŽ¥ä½¿ç”¨System.err è¿™ä¸€ç‚¹åªèƒ½ä»Žå…¶æ¦‚å¿µä¸Šåˆ’åˆ†ã€‚
+	* ä»¥ä¸Šçš„ä»£ç ä¹Ÿå¯ä»¥ä½¿ç”¨System.outè¾“å‡ºï¼Œåªèƒ½ä»Žæ¦‚å¿µä¸Šåˆ’åˆ†ã€‚
+	* åˆ‡è®°ï¼šSystem.outæ˜¯å¸Œæœ›ç”¨æˆ·çœ‹åˆ°çš„ï¼Œè€ŒSystem.erræ˜¯ä¸å¸Œæœ›ç”¨æˆ·çœ‹åˆ°çš„ã€‚
 	*
 	* */
 
@@ -46,18 +46,19 @@ public class SystemIOTest {
 
 	@Test
 	public void systemIn() throws Exception {
-		//System.inµÄÊäÈëÖØ¶¨Ïò
+		//System.inçš„è¾“å…¥é‡å®šå‘
 		System.setIn(new FileInputStream(file));
 		InputStream input = System.in;
 		StringBuffer buf = new StringBuffer();
 		byte[] b = new  byte[1024];
-		System.out.println("ÇëÊäÈëÀàÈÝ£º");
+		System.out.println("è¯·è¾“å…¥ç±»å®¹ï¼š");
 
 		int len = input.read(b);
+
 		/*
-		* ÒÔÉÏµÄ²Ù×÷´æÔÚÈçÏÂÎÊÌâ
-		* ÎÊÌâÒ»£ºÖ¸¶¨ÁËÊäÈëÊý¾ÝµÄ³¤¶È£¬Èç¹ûÏÖÔÚÊäÈëµÄÊý¾Ý³¬¹ýÁË³¤¶È·¶Î§£¬Ö»ÄÜÊäÈë²¿·ÖµÄÊý¾Ý¡£
-		* ÎÊÌâ¶þ£ºÈç¹ûbyteÊý×éÊÇÆæÊýµÄ»°£¬Ôò»¹¿ÉÄÜ³öÏÖÖÐÎÄÂÒÂëµÄÇé¿ö£¬ÒòÎªÒ»¸ö×Ö·ûÊÇÁ½¸ö×Ö½Ú¡£
+		* ä»¥ä¸Šçš„æ“ä½œå­˜åœ¨å¦‚ä¸‹é—®é¢˜
+		* é—®é¢˜ä¸€ï¼šæŒ‡å®šäº†è¾“å…¥æ•°æ®çš„é•¿åº¦ï¼Œå¦‚æžœçŽ°åœ¨è¾“å…¥çš„æ•°æ®è¶…è¿‡äº†é•¿åº¦èŒƒå›´ï¼Œåªèƒ½è¾“å…¥éƒ¨åˆ†çš„æ•°æ®ã€‚
+		* é—®é¢˜äºŒï¼šå¦‚æžœbyteæ•°ç»„æ˜¯å¥‡æ•°çš„è¯ï¼Œåˆ™è¿˜å¯èƒ½å‡ºçŽ°ä¸­æ–‡ä¹±ç çš„æƒ…å†µï¼Œå› ä¸ºä¸€ä¸ªå­—ç¬¦æ˜¯ä¸¤ä¸ªå­—èŠ‚ã€‚
 		* */
 
 		int temp;
@@ -68,27 +69,29 @@ public class SystemIOTest {
 			}
 			buf.append(c);
 		}
+
 		/*
-		* ÒÔÉÏµÄ²Ù×÷´æÔÚÈçÏÂÎÊÌâ
-		* ÊäÈëÖÐÎÄ¾Í»áÂÒÂë,ÒòÎªÃ¿¶ÁÈ¡Ò»¸ö×Ö½Ú¾Í½«Æä×ªÎª×Ö·û,
-		* ×ÖÄ¸ºÍÊý×Ö¶¼ÊÇÕ¼1¸ö×Ö½Ú ¿ÉÒÔÕý³£ÏÔÊ¾¡£
-		* µ«ÊÇÈç¹ûÊÇÖÐÎÄµÄ»°£¬¾ÍÏàµ±ÓÚÃ¿¶ÁÈ¡µ½Ò»¸ö×Ö½Ú¾ÍÊÇ°ë¸ö×Ö·û¾Í½øÐÐ×ª»¯£¬ËùÒÔµ¼ÖÂÂÒÂëµÄ´íÎó¡£
+		* ä»¥ä¸Šçš„æ“ä½œå­˜åœ¨å¦‚ä¸‹é—®é¢˜
+		* è¾“å…¥ä¸­æ–‡å°±ä¼šä¹±ç ,å› ä¸ºæ¯è¯»å–ä¸€ä¸ªå­—èŠ‚å°±å°†å…¶è½¬ä¸ºå­—ç¬¦,
+		* å­—æ¯å’Œæ•°å­—éƒ½æ˜¯å 1ä¸ªå­—èŠ‚ å¯ä»¥æ­£å¸¸æ˜¾ç¤ºã€‚
+		* ä½†æ˜¯å¦‚æžœæ˜¯ä¸­æ–‡çš„è¯ï¼Œå°±ç›¸å½“äºŽæ¯è¯»å–åˆ°ä¸€ä¸ªå­—èŠ‚å°±æ˜¯åŠä¸ªå­—ç¬¦å°±è¿›è¡Œè½¬åŒ–ï¼Œæ‰€ä»¥å¯¼è‡´ä¹±ç çš„é”™è¯¯ã€‚
 		*
-		* ¼üÅÌÊäÈëµÄ±ê×¼·½Ê½£º
-		* ×îºÃµÄÊä³ö·½Ê½ÊÇ½«È«²¿ÊäÈëµÄÊý¾ÝÔÝÊ±´æ·ÅÔÚÒ»¿éÄÚ´æÖ®ÉÏ£¬
-		* Ö®ºóÒ»´ÎÐÔµÄ´ÓÄÚ´æÖÐ¶ÁÈ¡Êý¾Ý£¬ÕâÑùËùÓÐÊý¾Ý¾ÍÕûÌåÖ»¶ÁÁËÒ»´Î£¬Ôò²»»áÔì³ÉÂÒÂë£¬¶øÇÒÒ²²»»áÊÜµ½³¤¶ÈµÄÏÞÖÆ¡£
-		* Èç¹ûÒªÏëÊµÏÖÒÔÉÏµÄ¹¦ÄÜ£¬ÔòÖ»ÄÜÍ¨¹ýIOÖÐµÄÏÂÒ»¸öÀà BufferedReaderÀàÍê³É¡£
+		* é”®ç›˜è¾“å…¥çš„æ ‡å‡†æ–¹å¼ï¼š
+		* æœ€å¥½çš„è¾“å‡ºæ–¹å¼æ˜¯å°†å…¨éƒ¨è¾“å…¥çš„æ•°æ®æš‚æ—¶å­˜æ”¾åœ¨ä¸€å—å†…å­˜ä¹‹ä¸Šï¼Œ
+		* ä¹‹åŽä¸€æ¬¡æ€§çš„ä»Žå†…å­˜ä¸­è¯»å–æ•°æ®ï¼Œè¿™æ ·æ‰€æœ‰æ•°æ®å°±æ•´ä½“åªè¯»äº†ä¸€æ¬¡ï¼Œåˆ™ä¸ä¼šé€ æˆä¹±ç ï¼Œè€Œä¸”ä¹Ÿä¸ä¼šå—åˆ°é•¿åº¦çš„é™åˆ¶ã€‚
+		* å¦‚æžœè¦æƒ³å®žçŽ°ä»¥ä¸Šçš„åŠŸèƒ½ï¼Œåˆ™åªèƒ½é€šè¿‡IOä¸­çš„ä¸‹ä¸€ä¸ªç±» BufferedReaderç±»å®Œæˆã€‚
 		* */
-		System.out.println("ÊäÈëÀàÈÝÎª£º"+new String(b,0,len));
+		System.out.println("è¾“å…¥ç±»å®¹ä¸ºï¼š"+new String(b,0,len));
 		input.close();
 	}
 
 	@Test
 	public void systemOut() {
 		try {
-			System.setOut(new PrintStream(new FileOutputStream(file,true)));  // System.outÖØ¶¨Ïò
+			// System.outé‡å®šå‘
+			System.setOut(new PrintStream(new FileOutputStream(file,true)));
 			OutputStream out  = System.out;
-			out.write("ÖÐ¹ú¹²²úµ³µÚÊ®¾Å´ÎÈ«¹ú´ú±í´ó»á".getBytes());
+			out.write("ä¸­å›½å…±äº§å…šç¬¬åä¹æ¬¡å…¨å›½ä»£è¡¨å¤§ä¼š".getBytes());
 			out.close();
 		} catch (IOException e) {
 			System.err.println(e);
@@ -98,7 +101,8 @@ public class SystemIOTest {
 
 	@Test
 	public void systemErr() throws FileNotFoundException {
-		System.setErr(new PrintStream(new FileOutputStream(file,true)));  //System.errÊä³öÖØ¶¨Ïò
+		//System.errè¾“å‡ºé‡å®šå‘
+		System.setErr(new PrintStream(new FileOutputStream(file,true)));
 		String str  = "hello";
 		System.err.println(str);
 	}

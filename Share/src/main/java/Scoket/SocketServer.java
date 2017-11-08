@@ -9,39 +9,39 @@ import java.net.Socket;
 
 public class SocketServer {
 
-	public static void main(String[] args) throws IOException {
-		ServerSocket server = null;
-		Socket client = null;
-		PrintStream out = null;
-		BufferedReader buf = null;
-		server = new ServerSocket(9999);
-		
-		boolean f = true;
-		
-		while(f){
-			System.out.println("·şÎñÆ÷ÔËĞĞ£¬µÈ´ı¿Í»§¶ËÁ¬½Ó");
-			client = server.accept();
-			System.out.println("¿Í»§¶ËÁ¬½Ó³É¹¦");
-			
-			buf = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			
-			out = new PrintStream(client.getOutputStream());
-					
-			boolean flag = true;
-			
-			while(flag){
-				System.out.println("¿ªÊ¼¶ÁÈ¡¿Í»§¶Ë·¢ËÍµÄĞÅÏ¢");
-				String str = buf.readLine();
-				System.out.println("¿Í»§¶Ë·¢ËÍµÄĞÅÏ¢Îª£º"+str);
-				if("bye".equals(str)){
-					flag = false;
-				}else{
-					out.println("Echo"+str);
-				}
-			}			
-			out.close();
-			client.close();		
-		}
-		server.close();
-	}
+    public static void main(String[] args) throws IOException {
+        ServerSocket server = null;
+        Socket client = null;
+        PrintStream out = null;
+        BufferedReader buf = null;
+        server = new ServerSocket(9999);
+
+        boolean f = true;
+
+        while (f) {
+            System.out.println("æœåŠ¡å™¨è¿è¡Œï¼Œç­‰å¾…å®¢æˆ·ç«¯è¿æ¥");
+            client = server.accept();
+            System.out.println("å®¢æˆ·ç«¯è¿æ¥æˆåŠŸ");
+
+            buf = new BufferedReader(new InputStreamReader(client.getInputStream()));
+
+            out = new PrintStream(client.getOutputStream());
+
+            boolean flag = true;
+
+            while (flag) {
+                System.out.println("å¼€å§‹è¯»å–å®¢æˆ·ç«¯å‘é€çš„ä¿¡æ¯");
+                String str = buf.readLine();
+                System.out.println("å®¢æˆ·ç«¯å‘é€çš„ä¿¡æ¯ä¸ºï¼š" + str);
+                if ("bye".equals(str)) {
+                    flag = false;
+                } else {
+                    out.println("Echo" + str);
+                }
+            }
+            out.close();
+            client.close();
+        }
+        server.close();
+    }
 }

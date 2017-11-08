@@ -14,7 +14,7 @@
         <module>BookNote</module>
         <module>Share</module>
         <module>JavaProject</module>
-        <module>TIJ4</module>
+        <module>ThinkingJava</module>
     </modules>
 
     <properties>

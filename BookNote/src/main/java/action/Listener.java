@@ -15,6 +15,8 @@ public class Listener implements ActionListener {
 	public int i;
 	public boolean flag=true;
 	public StringBuffer sb,sb1;
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

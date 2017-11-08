@@ -1,4 +1,4 @@
-package io;
+package io.done;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,30 +8,30 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 /**
- * @author ÌìÆô zhouj@dtdream.com
+ * @author å¤©å¯ zhouj@dtdream.com
  * @since
  */
 public class CopyFile{
-	
+
 	public static void main(String[] args){
-		// ÅĞ¶ÏÊÇ·ñÊÇÁ½¸ö²ÎÊı
+		// åˆ¤æ–­æ˜¯å¦æ˜¯ä¸¤ä¸ªå‚æ•°
 		if(args.length != 2){
-			System.out.println("ÊäÈëµÄ²ÎÊı²»ÕıÈ·¡£") ;
-			System.out.println("Àı£ºjava Copy Ô´ÎÄ¼şÂ·¾¶ Ä¿±êÎÄ¼şÂ·¾¶") ;
-			// ÏµÍ³ÍË³ö
+			System.out.println("è¾“å…¥çš„å‚æ•°ä¸æ­£ç¡®ã€‚") ;
+			System.out.println("ä¾‹ï¼šjava Copy æºæ–‡ä»¶è·¯å¾„ ç›®æ ‡æ–‡ä»¶è·¯å¾„") ;
+			// ç³»ç»Ÿé€€å‡º
 			System.exit(1) ;
 		}
-		// Ô´ÎÄ¼şµÄFile¶ÔÏó
+		// æºæ–‡ä»¶çš„Fileå¯¹è±¡
 		File file1 = new File(args[0]) ;
-		// Ä¿±êÎÄ¼şµÄFile¶ÔÏó
+		// ç›®æ ‡æ–‡ä»¶çš„Fileå¯¹è±¡
 		File file2 = new File(args[1]) ;
 		if(!file1.exists()){
-			System.out.println("Ô´ÎÄ¼ş²»´æÔÚ£¡") ;
+			System.out.println("æºæ–‡ä»¶ä¸å­˜åœ¨ï¼") ;
 			System.exit(1) ;
 		}
-		// ×¼±¸ºÃÊäÈëÁ÷¶ÔÏó£¬¶ÁÈ¡Ô´ÎÄ¼ş
+		// å‡†å¤‡å¥½è¾“å…¥æµå¯¹è±¡ï¼Œè¯»å–æºæ–‡ä»¶
 		InputStream input = null ;
-		// ×¼±¸ºÃÊä³öÁ÷¶ÔÏó£¬Ğ´ÈëÄ¿±êÎÄ¼ş
+		// å‡†å¤‡å¥½è¾“å‡ºæµå¯¹è±¡ï¼Œå†™å…¥ç›®æ ‡æ–‡ä»¶
 		OutputStream out = null ;
 		try{
 			input = new FileInputStream(file1) ;
@@ -43,21 +43,21 @@ public class CopyFile{
 		}catch(FileNotFoundException e){
 			e.printStackTrace() ;
 		}
-		// ÅĞ¶ÏÊäÈë»òÊä³öÊÇ·ñ×¼±¸ºÃ
+		// åˆ¤æ–­è¾“å…¥æˆ–è¾“å‡ºæ˜¯å¦å‡†å¤‡å¥½
 		if(input!=null && out!=null){
 			int temp = 0 ;
 			try{
 				while((temp=input.read())!=-1){
 					out.write(temp) ;
 				}
-				System.out.println("¿½±´Íê³É£¡") ;
+				System.out.println("æ‹·è´å®Œæˆï¼") ;
 			}catch(IOException e){
 				e.printStackTrace() ;
-				System.out.println("¿½±´Ê§°Ü£¡") ;
+				System.out.println("æ‹·è´å¤±è´¥ï¼") ;
 			}
 			try{
-				input.close() ;		// ¹Ø±Õ
-				out.close() ;		// ¹Ø±Õ
+				input.close() ;		// å…³é—­
+				out.close() ;		// å…³é—­
 			}catch(IOException e){
 				e.printStackTrace() ;
 			}

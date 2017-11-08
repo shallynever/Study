@@ -12,23 +12,23 @@ public class UDPSend {
 
 	public static void main(String[] args) throws IOException {
 		DatagramSocket ds = new DatagramSocket(30000);
-		
+
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-		String meassage = null;
+		String message;
 		boolean flag = true;
 		while(flag){
-			System.out.print("请输入消息内容：");
-			meassage = input.readLine();
-			byte[] buf = meassage.getBytes();
-			if("bye".equals(meassage)){
+			System.out.print("璇疯緭鍏ユ秷鎭唴瀹癸細");
+			message = input.readLine();
+			byte[] buf = message.getBytes();
+			if("bye".equals(message)){
 				flag = false;
 			}
-			DatagramPacket dp = 
+			DatagramPacket dp =
 					new DatagramPacket(buf, buf.length, InetAddress.getByName("localhost"), 10000);
 			ds.send(dp);
-			
-			
-		}	
+
+
+		}
 		ds.close();
 	}
 

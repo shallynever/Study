@@ -1,8 +1,10 @@
-package io;
+package io.done;
 
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
@@ -19,7 +21,7 @@ public class FileTest {
 	* 3、File类直接处理文件和文件系统。
 	* 4、File类没有指定信息怎样从文件读取或向文件存储。
 	* */
-	private TreeSet<String> filePathSet = new TreeSet<>();
+	private static TreeSet<String> filePathSet = new TreeSet<>();
 	private static final String filePath = "F:"+File.separator+ "io"+File.separator+"File";
 
 	@Test
@@ -78,7 +80,7 @@ public class FileTest {
 		}
 	}
 
-	private TreeSet<String> getFilePath(File file) {
+	private static TreeSet<String> getFilePath(File file) {
 		if(file != null){
 			if(file.isDirectory()){
 				File[] files = file.listFiles();
@@ -93,6 +95,26 @@ public class FileTest {
 			}
 		}
 		return filePathSet;
+	}
+
+
+	public static void main(String[] args) throws FileNotFoundException {
+		String path = "E:"+File.separator+"WorkCode"+File.separator+"pay-publicpayment";
+		File file = new File(path);
+		TreeSet<String> treeSet = getFilePath(file);
+		for (String s : treeSet) {
+			System.out.println(s);
+		}
+		System.out.println(file.getPath());
+
+		// todo pathSeparator
+		String PATH = System.getenv("PATH");
+		String[] PATHS = PATH.split(File.pathSeparator);
+		for (String temp : PATHS) {
+			System.out.println(temp);
+		}
+		System.out.println(PATH);
+
 	}
 
 }

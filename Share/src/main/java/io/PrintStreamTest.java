@@ -6,15 +6,15 @@ import java.io.File;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 /**
- * @author ÌìÆô zhouj@dtdream.com
+ * @author å¤©å¯ zhouj@dtdream.com
  * @since
  */
 public class PrintStreamTest {
 
 	/*
-	* ÔÚÕû¸öIO°üÖĞ,´òÓ¡Á÷ÊÇÊä³öĞÅÏ¢×î·½±ãµÄÀà,Ö÷Òª°üº¬×Ö½Ú´òÓ¡Á÷(PrintStream)ºÍ×Ö·û´òÓ¡Á÷(PrintWriter)
-	* ´òÓ¡Á÷Ìá¹©ÁË·Ç³£·½±ãµÄ´òÓ¡¹¦ÄÜ,¿ÉÒÔ´òÓ¡ÈÎºÎÊı¾İÀàĞÍ¡£
-	* ·½±ãµÄ´òÓ¡¸÷ÖÖÊı¾İµÄ±íÊ¾ĞÎÊ½¡£ËüµÄ´òÓ¡·½·¨¿ÉÒÔ±£Ö¤ÊıÖµµÄ±íÏÖĞÎÊ½²»±ä¡£Ğ´µÄÊÇÊ²Ã´Ñù×Ó£¬Ä¿µÄµØ¾ÍÊÇÊ²Ã´Ñù×Ó
+	* åœ¨æ•´ä¸ªIOåŒ…ä¸­,æ‰“å°æµæ˜¯è¾“å‡ºä¿¡æ¯æœ€æ–¹ä¾¿çš„ç±»,ä¸»è¦åŒ…å«å­—èŠ‚æ‰“å°æµ(PrintStream)å’Œå­—ç¬¦æ‰“å°æµ(PrintWriter)
+	* æ‰“å°æµæä¾›äº†éå¸¸æ–¹ä¾¿çš„æ‰“å°åŠŸèƒ½,å¯ä»¥æ‰“å°ä»»ä½•æ•°æ®ç±»å‹ã€‚
+	* æ–¹ä¾¿çš„æ‰“å°å„ç§æ•°æ®çš„è¡¨ç¤ºå½¢å¼ã€‚å®ƒçš„æ‰“å°æ–¹æ³•å¯ä»¥ä¿è¯æ•°å€¼çš„è¡¨ç°å½¢å¼ä¸å˜ã€‚å†™çš„æ˜¯ä»€ä¹ˆæ ·å­ï¼Œç›®çš„åœ°å°±æ˜¯ä»€ä¹ˆæ ·å­
 	* */
 
 	String filePath = "F:"+ File.separator+ "io" +File.separator+"PrintStream"+File.separator+"test.txt";
@@ -23,11 +23,11 @@ public class PrintStreamTest {
 	@Test
 	public void printStream() throws Exception {
 		PrintStream ps = new PrintStream(file);
-		String name = "ÖÜ¾´";
+		String name = "å‘¨æ•¬";
 		int age = 25;
 		float score = 78.05f;
 		char sex = 'M';
-		ps.printf("ĞÕÃû£º%s;ÄêÁä£º%d;³É¼¨£º%f;ĞÔ±ğ£º%c",name,age,score,sex);
+		ps.printf("å§“åï¼š%s;å¹´é¾„ï¼š%d;æˆç»©ï¼š%f;æ€§åˆ«ï¼š%c",name,age,score,sex);
 		ps.close();
 	}
 

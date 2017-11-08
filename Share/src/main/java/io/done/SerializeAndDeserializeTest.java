@@ -1,4 +1,4 @@
-package io;
+package io.done;
 
 import io.bean.Person;
 import io.bean.Student;

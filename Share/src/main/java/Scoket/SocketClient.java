@@ -11,30 +11,30 @@ public class SocketClient {
 
 	public static void main(String[] args) throws IOException {
 		Socket client = new Socket("localhost", 9999);
-		
+
 		BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-		
+
 		PrintStream out = new PrintStream(client.getOutputStream());
-		
+
 		BufferedReader bufEcho = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
 		boolean flag = true;
-		
+
 		while(flag){
-			
-			System.out.println("ÇëÊäÈëÏûÏ¢ÄÚÈİ£º");
+
+			System.out.println("è¯·è¾“å…¥æ¶ˆæ¯å†…å®¹ï¼š");
 			String temp = input.readLine();
-			System.out.println("ÊäÈëµÄÏûÏ¢Îª£º"+temp);
+			System.out.println("è¾“å…¥çš„æ¶ˆæ¯ä¸ºï¼š"+temp);
 			out.println(temp);
 			if("bye".equals(temp)){
 				flag = false;
 			}else{
 				String echo = bufEcho.readLine();
 				System.out.println(echo);
-						
+
 			}
-			
-		}			
+
+		}
 		client.close();
 		bufEcho.close();
 	}

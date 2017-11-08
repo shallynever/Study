@@ -29,7 +29,7 @@ public class Receive implements Runnable{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("接收内容："+new String(b,0,len));
+        System.out.println("接收内容："+Thread.currentThread().getName()+new String(b,0,len));
     }
 
 
