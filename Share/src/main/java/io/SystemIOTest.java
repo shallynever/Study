@@ -5,12 +5,9 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintStream;
 /**
  * @author 天启 zhouj@dtdream.com
  * @since
@@ -105,47 +102,32 @@ public class SystemIOTest {
 	}
 
 	@Test
-	public void systemOut() {
-		try {
+	public void systemOut() throws IOException {
+
 			// System.out重定向
-			System.setOut(new PrintStream(new FileOutputStream(file,true)));
+//			System.setOut(new PrintStream(new FileOutputStream(file,true)));
 			OutputStream out  = System.out;
 			out.write("中国共产党第十九次全国代表大会".getBytes());
 			out.close();
-		} catch (IOException e) {
-			System.err.println(e);
-		}
+
 
 	}
 
 	@Test
-	public void systemErr() throws FileNotFoundException {
+	public void systemErr(){
 		//System.err输出重定向
-		System.setErr(new PrintStream(new FileOutputStream(file,true)));
+//		System.setErr(new PrintStream(new FileOutputStream(file,true)));
 		String str  = "hello";
-		System.err.println(str);
-
-
-
+		try {
+			System.out.println(Integer.parseInt(str));
+		} catch (Exception e){
+			System.err.println(e);
+		}
 
 
 	}
 
 	public static void main(String[] args) throws IOException {
-		InputStream inputStream = System.in;
-		byte[] bytes = new byte[1024];
-		int temp;
-		int count = 0;
-		while (-1 != (temp = inputStream.read())){
-			bytes[count] = (byte) temp;
-			char c = (char) temp;
-			if (c == '\n')
-				break;
-			count++;
-		}
-//		System.out.println(new String(bytes));
-
-		System.err.print("jjjj");
 
 
 
