@@ -53,10 +53,20 @@ public class ScannerTest {
 	@Test
 	public void baseScanner() {
 		String str = "hello app";
-		System.setIn(new ByteArrayInputStream(str.getBytes()));
+//		System.setIn(new ByteArrayInputStream(str.getBytes()));
 		Scanner scan = new Scanner(System.in);
-		scan.useDelimiter("\n"); //设置读取分隔符
-		String content = scan.next();
+//		scan.useDelimiter("\n"); //设置读取分隔符
+		String content = scan.nextLine();
+		System.out.println("输入的数据为:"+content);
+		scan.close();
+	}
+
+	public static void main(String[] args) {
+		String str = "hello app";
+//		System.setIn(new ByteArrayInputStream(str.getBytes()));
+		Scanner scan = new Scanner(System.in);
+//		scan.useDelimiter("\n"); //设置读取分隔符,默认next读到空格
+		int content = scan.nextInt(16);
 		System.out.println("输入的数据为:"+content);
 		scan.close();
 	}

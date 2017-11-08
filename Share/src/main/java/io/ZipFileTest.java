@@ -6,10 +6,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
+
 /**
  * @author 天启 zhouj@dtdream.com
  * @since
@@ -43,6 +47,18 @@ public class ZipFileTest {
 		ZipFile zipfile = new ZipFile(file);
 		System.out.println("压缩文件名称："+zipfile.getName());
 		zipfile.close();
+	}
+
+	public static void main(String[] args) throws IOException {
+		File file = new File("F:"+File.separator+"privateKey.zip");
+		ZipFile zipFile = new ZipFile(file);
+		ZipEntry zipEntry = zipFile.entries().nextElement();
+		ZipInputStream zipInputStream = new ZipInputStream(zipFile.getInputStream(zipEntry));
+		InputStreamReader inputStreamReader = new InputStreamReader(zipInputStream);
+		char[] chars = new char[1024];
+		inputStreamReader.read(chars);
+		System.out.println(String.valueOf(chars));
+
 	}
 
 }

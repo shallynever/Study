@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
 /**
@@ -41,19 +42,29 @@ public class SystemIOTest {
 	* */
 
 
-	String filePath = "F:"+ File.separator+ "io" +File.separator+"SystemIO"+File.separator+"test.txt";
+	String filePath = "F:"+ File.separator+ "io" +File.separator+"test.txt";
 	File file = new File(filePath);
 
 	@Test
-	public void systemIn() throws Exception {
+	public void systemIn() {
 		//System.in的输入重定向
-		System.setIn(new FileInputStream(file));
+		try {
+			System.setIn(new FileInputStream(file));
+		} catch (FileNotFoundException e) {
+			System.err.print(e.getMessage());
+			e.printStackTrace();
+		}
 		InputStream input = System.in;
 		StringBuffer buf = new StringBuffer();
 		byte[] b = new  byte[1024];
 		System.out.println("请输入类容：");
 
-		int len = input.read(b);
+		int len = 0;
+		try {
+			len = input.read(b);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		/*
 		* 以上的操作存在如下问题
@@ -62,12 +73,16 @@ public class SystemIOTest {
 		* */
 
 		int temp;
-		while((temp = input.read())!=-1){
-			char c = (char)temp;
-			if(c=='\n'){
-				break;
-			}
-			buf.append(c);
+		try {
+			while((temp = input.read())!=-1){
+                char c = (char)temp;
+                if(c=='\n'){
+                    break;
+                }
+                buf.append(c);
+            }
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		/*
@@ -82,7 +97,11 @@ public class SystemIOTest {
 		* 如果要想实现以上的功能，则只能通过IO中的下一个类 BufferedReader类完成。
 		* */
 		System.out.println("输入类容为："+new String(b,0,len));
-		input.close();
+		try {
+			input.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -105,6 +124,31 @@ public class SystemIOTest {
 		System.setErr(new PrintStream(new FileOutputStream(file,true)));
 		String str  = "hello";
 		System.err.println(str);
+
+
+
+
+
+	}
+
+	public static void main(String[] args) throws IOException {
+		InputStream inputStream = System.in;
+		byte[] bytes = new byte[1024];
+		int temp;
+		int count = 0;
+		while (-1 != (temp = inputStream.read())){
+			bytes[count] = (byte) temp;
+			char c = (char) temp;
+			if (c == '\n')
+				break;
+			count++;
+		}
+//		System.out.println(new String(bytes));
+
+		System.err.print("jjjj");
+
+
+
 	}
 
 }
