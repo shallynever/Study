@@ -5,17 +5,19 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintStream;
+
 /**
  * @author 天启 zhouj@dtdream.com
- * @since
  */
 public class SystemIOTest {
 
 	/*
-	* System.in是一个典型的连接控制台程序和键盘输入的InputStream流。
+    * System.in是一个典型的连接控制台程序和键盘输入的InputStream流。
 	* 通常当数据通过命令行参数或者配置文件传递给命令行Java程序的时候，System.in并不是很常用。
 	* 图形界面程序通过界面传递参数给程序，这是一块单独的Java IO输入机制。
 	*
@@ -39,29 +41,19 @@ public class SystemIOTest {
 	* */
 
 
-	String filePath = "F:"+ File.separator+ "io" +File.separator+"test.txt";
-	File file = new File(filePath);
+    String filePath = "F:" + File.separator + "test.txt";
+    File file = new File(filePath);
 
-	@Test
-	public void systemIn() {
-		//System.in的输入重定向
-		try {
-			System.setIn(new FileInputStream(file));
-		} catch (FileNotFoundException e) {
-			System.err.print(e.getMessage());
-			e.printStackTrace();
-		}
-		InputStream input = System.in;
-		StringBuffer buf = new StringBuffer();
-		byte[] b = new  byte[1024];
-		System.out.println("请输入类容：");
-
-		int len = 0;
-		try {
-			len = input.read(b);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    @Test
+    public void systemIn() throws IOException {
+        //System.in的输入重定向
+		System.setIn(new FileInputStream(file));
+        InputStream input = System.in;
+        StringBuffer buf = new StringBuffer();
+        byte[] b = new byte[1024];
+        System.out.println("请输入类容：");
+        int len;
+        len = input.read(b);
 
 		/*
 		* 以上的操作存在如下问题
@@ -69,18 +61,14 @@ public class SystemIOTest {
 		* 问题二：如果byte数组是奇数的话，则还可能出现中文乱码的情况，因为一个字符是两个字节。
 		* */
 
-		int temp;
-		try {
-			while((temp = input.read())!=-1){
-                char c = (char)temp;
-                if(c=='\n'){
-                    break;
-                }
-                buf.append(c);
+        int temp;
+        while ((temp = input.read()) != -1) {
+            char c = (char) temp;
+            if (c == '\n') {
+                break;
             }
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+            buf.append(c);
+        }
 
 		/*
 		* 以上的操作存在如下问题
@@ -93,44 +81,47 @@ public class SystemIOTest {
 		* 之后一次性的从内存中读取数据，这样所有数据就整体只读了一次，则不会造成乱码，而且也不会受到长度的限制。
 		* 如果要想实现以上的功能，则只能通过IO中的下一个类 BufferedReader类完成。
 		* */
-		System.out.println("输入类容为："+new String(b,0,len));
-		try {
-			input.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+        System.out.println("输入类容为：" + new String(b, 0, len));
+        input.close();
 
-	@Test
-	public void systemOut() throws IOException {
+    }
 
-			// System.out重定向
-//			System.setOut(new PrintStream(new FileOutputStream(file,true)));
-			OutputStream out  = System.out;
-			out.write("中国共产党第十九次全国代表大会".getBytes());
-			out.close();
+    @Test
+    public void systemOut() throws IOException {
+        // System.out重定向
+        System.setOut(new PrintStream(new FileOutputStream(file,true)));
+        OutputStream out = System.out;
+        out.write("中国共产党第十九次全国代表大会".getBytes());
+        testSystemRedirect();
+        out.flush();
+        out.close();
+    }
 
+    @Test
+    public void systemErr() throws FileNotFoundException {
+        //System.err输出重定向
+		System.setErr(new PrintStream(new FileOutputStream(file,true)));
+        String str = "h";
+        System.out.print(str);
+        System.err.println(str+"1");
 
-	}
+        // 信息在Process finished with exit code 0输出
+        PrintStream printStream = System.err;
+        printStream.println(str+"2");
+        printStream.close();
+    }
 
-	@Test
-	public void systemErr(){
-		//System.err输出重定向
-//		System.setErr(new PrintStream(new FileOutputStream(file,true)));
-		String str  = "hello";
-		try {
-			System.out.println(Integer.parseInt(str));
-		} catch (Exception e){
-			System.err.println(e);
-		}
+    public static void main(String[] args) throws IOException {
+        String str = "hhhh";
+        System.out.print(str);
+        System.err.print(str+"1");
+        PrintStream printStream = System.err;
+        printStream.print(str+"2");
+        printStream.close();
+    }
 
-
-	}
-
-	public static void main(String[] args) throws IOException {
-
-
-
-	}
+    private void testSystemRedirect(){
+        System.out.print("testSystemOutRedirect");
+    }
 
 }
