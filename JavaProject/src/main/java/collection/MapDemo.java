@@ -47,7 +47,7 @@ public class MapDemo {
 	 * */
 
 	public static void main(String[] args) {
-		Map<Integer, String> map = new TreeMap<>();
+		Map<Integer, String> map = new TreeMap();
 		map.put(1, "流操作");
 		map.put(2, "集合");
 		map.put(3, "网络编程");
@@ -57,7 +57,7 @@ public class MapDemo {
 //		MapOutputMethodTwo(map);
 		
 		
-		Map<Person, String> mapPerson = new HashMap<>(10);
+		Map<Person, String> mapPerson = new HashMap(10);
 		/**
 		 * 在这里如果用TreeMap,那么在Person类中就要实现Compareable或Comparator
 		 * 用HashMap，就需要在Person类中覆盖hashCode和equals方法
